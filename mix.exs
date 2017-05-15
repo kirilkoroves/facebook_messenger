@@ -5,22 +5,23 @@ defmodule FacebookMessenger.Mixfile do
     [app: :facebook_messenger,
      name: "ExFacebookMessenger",
      source_url: "https://github.com/oarrabi/facebook_messenger",
-     version: "0.3.0",
+     version: "0.4.0",
      docs: [ extras: ["README.md"] ],
      elixir: "~> 1.0",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      test_coverage: [tool: Coverex.Task, coveralls: true],
-     deps: deps,
-     package: package,
-     description: description]
+     deps: deps(),
+     package: package(),
+     licenses: ["MIT"],
+     description: description()]
   end
 
   # Configuration for the OTP application
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger, :httpotion]]
+    [applications: [:logger, :httpoison, :poison]]
   end
 
   # Dependencies can be Hex packages:
@@ -33,17 +34,17 @@ defmodule FacebookMessenger.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    d = [{:httpotion, "~> 3.0.2"},
+    d = [{:httpoison, "~> 0.6"},
          {:plug, "> 0.0.0"},
          {:inch_ex, "> 0.0.0", only: :docs},
          {:ex_doc, "~> 0.7", only: :dev},
-         {:earmark, "~> 0.1", only: :docs}]
+         {:earmark, "~> 0.1", only: :dev}]
 
     if Mix.env == :test do
       [{:coverex, "~> 1.4.8", only: :test}, {:poison, "~> 2.1.0 or ~> 3.0", override: true} | d]
     else
       [{:poison, "~> 2.1.0 or ~> 3.0"} | d]
-    end
+end
   end
 
   defp description do

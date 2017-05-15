@@ -3,8 +3,7 @@ defmodule FacebookMessenger.RequestManager do
   module respinsible to post a request to facebook
   """
   def post(url: url, body: body) do
-    HTTPotion.post url,
-    body: body, headers: ["Content-Type": "application/json"]
+    HTTPoison.post url, body, [{"Content-Type", "application/json"}]
   end
 end
 

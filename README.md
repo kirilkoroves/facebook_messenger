@@ -11,7 +11,7 @@ ExFacebookMessenger is a library that helps you create facebook messenger bots e
 
 ```elixir
 def deps do
-  [{:facebook_messenger, "~> 0.3.0"}]
+  [{:facebook_messenger, git: "https://github.com/kirilkoroves/facebook_messenger.git", override: true}]
 end
 ```
 
@@ -76,19 +76,3 @@ config :facebook_messenger,
 ```
 
 To get the `facebook_page_token` and `challenge_verification_token` follow the instructions [here ](https://developers.facebook.com/docs/messenger-platform/quickstart)
-
-For the webhook endpoint use `http://your-app-url/messenger/webhook`
-
-### With Phoenix
-If you use phoenix framework in your project, then you need the phoenix version of `facebook_messenger` this can be found at `phoenix_facebook_messenger` [found here](https://github.com/oarrabi/phoenix_facebook_messenger).
-
-## Sample
-
-- A sample facebook echo bot with plug can be found here. https://github.com/oarrabi/plug_facebook_echo_bot
-- For the phoenix echo bot, https://github.com/oarrabi/phoenix_facebook_echo_bot
-
-## Future Improvements
-
-- [ ] Handle other types of facebook messages
-- [ ] Support sending facebook structure messages
-- [x] Handle facebook postback messages
